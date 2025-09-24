@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/client'
 
 export interface UploadResult {
   data: { path: string } | null
-  error: any
+  error: Error | null
 }
 
 export interface FileUploadOptions {
@@ -43,7 +43,7 @@ export async function getPublicUrl(bucket: string, path: string): Promise<string
   return data.publicUrl
 }
 
-export async function deleteFile(bucket: string, path: string): Promise<{ error: any }> {
+export async function deleteFile(bucket: string, path: string): Promise<{ error: Error | null }> {
   const supabase = createClient()
   
   const { error } = await supabase.storage
@@ -53,7 +53,7 @@ export async function deleteFile(bucket: string, path: string): Promise<{ error:
   return { error }
 }
 
-export async function listFiles(bucket: string, path?: string): Promise<{ data: any[] | null; error: any }> {
+export async function listFiles(bucket: string, path?: string): Promise<{ data: unknown[] | null; error: Error | null }> {
   const supabase = createClient()
   
   const { data, error } = await supabase.storage

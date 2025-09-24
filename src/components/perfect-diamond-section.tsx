@@ -39,15 +39,16 @@ const products = [
 ]
 
 export default function PerfectDiamondSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  // Navigation state for future carousel functionality
+  // const [currentIndex, setCurrentIndex] = useState(0)
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % products.length)
-  }
+  // const nextSlide = () => {
+  //   setCurrentIndex((prev) => (prev + 1) % products.length)
+  // }
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)
-  }
+  // const prevSlide = () => {
+  //   setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)
+  // }
 
   return (
     <section className="py-16 bg-gray-900 text-white">

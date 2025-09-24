@@ -19,7 +19,7 @@ export default function Footer() {
               <span className="text-xl font-bold">Jewelry Store</span>
             </div>
             <p className="text-gray-400 leading-relaxed">
-              Crafting timeless jewelry pieces that celebrate life's most precious moments with elegance and sophistication.
+              Crafting timeless jewelry pieces that celebrate life&apos;s most precious moments with elegance and sophistication.
             </p>
             <div className="flex space-x-4">
               <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">

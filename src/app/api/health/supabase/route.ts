@@ -21,9 +21,10 @@ export async function GET() {
       },
       sessionPresent: !!data.session,
     })
-  } catch (e: any) {
+  } catch (e: unknown) {
+    const errorMessage = e instanceof Error ? e.message : 'unknown error'
     return NextResponse.json(
-      { ok: false, error: e?.message || 'unknown error' },
+      { ok: false, error: errorMessage },
       { status: 500 }
     )
   }

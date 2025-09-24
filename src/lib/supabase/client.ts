@@ -11,7 +11,6 @@ export function createClient() {
 
   if (!url || !anonKey) {
     if (typeof window !== 'undefined') {
-      // eslint-disable-next-line no-console
       console.error('@supabase/ssr: Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY')
     }
   }
