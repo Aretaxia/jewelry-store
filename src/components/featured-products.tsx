@@ -5,8 +5,7 @@ import Image from 'next/image'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Heart, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useState } from 'react'
+import { Heart, ShoppingBag } from 'lucide-react'
 
 const products = [
   {
@@ -64,8 +63,8 @@ export default function FeaturedProducts() {
 
           {/* Right side - Product Cards */}
           <div className="relative">
-            {/* Navigation buttons */}
-            <button
+            {/* Navigation buttons - commented out until carousel is implemented */}
+            {/* <button
               onClick={prevSlide}
               className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900 rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow"
             >
@@ -77,7 +76,7 @@ export default function FeaturedProducts() {
               className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900 rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow"
             >
               <ChevronRight className="h-6 w-6 text-white" />
-            </button>
+            </button> */}
 
             {/* Product Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

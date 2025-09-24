@@ -31,9 +31,7 @@ export async function updateSession(request: NextRequest) {
   // supabase.auth.getUser(). A simple mistake could make it very hard to debug
   // issues with users being randomly logged out.
 
-  const {
-    data: { user: _user },
-  } = await supabase.auth.getUser()
+  await supabase.auth.getUser()
 
   // For now, we'll skip authentication redirects
   // You can uncomment this later when you have login pages set up
