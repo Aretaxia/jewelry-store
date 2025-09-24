@@ -2,12 +2,14 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { useAuth } from '@/contexts/auth-context'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu, ShoppingBag } from 'lucide-react'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const { user, signOut } = useAuth()
 
   return (
     <nav className="sticky top-0 z-50 bg-gray-900">
@@ -49,6 +51,20 @@ export default function Navigation() {
               <ShoppingBag className="h-5 w-5 mr-2" />
               My Cart
             </Button>
+            {user ? (
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-white border-gray-700 hover:bg-gray-800"
+                onClick={signOut}
+              >
+                Sign out
+              </Button>
+            ) : (
+              <Link href="/login" className="text-white hover:text-yellow-400">
+                Sign in
+              </Link>
+            )}
             
             {/* Mobile menu button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>

@@ -4,26 +4,27 @@ import { cookies } from 'next/headers'
 export function createClient() {
   const cookieStore = cookies()
 
-  return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return cookieStore.getAll()
-        },
-        setAll(cookiesToSet) {
-          try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
-            )
-          } catch {
-            // The `setAll` method was called from a Server Component.
-            // This can be ignored if you have middleware refreshing
-            // user sessions.
-          }
-        },
+  const url =
+    process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    'https://fdxmssjbjqvxggdyuhdp.supabase.co'
+  const anonKey =
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkeG1zc2pianF2eGdnZHl1aGRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3MzE1MjYsImV4cCI6MjA3NDMwNzUyNn0.F_14PKT6qQHiC1FUmUsGFgjYTvxLFw1QEjbBpNk2nuU'
+
+  return createServerClient(url, anonKey, {
+    cookies: {
+      getAll() {
+        return cookieStore.getAll()
       },
-    }
-  )
+      setAll(cookiesToSet) {
+        try {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            cookieStore.set(name, value, options)
+          )
+        } catch {
+          // Called from a Server Component without cookie write access; ignore
+        }
+      },
+    },
+  })
 }
