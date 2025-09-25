@@ -13,6 +13,8 @@ export function createClient() {
     if (typeof window !== 'undefined') {
       console.error('@supabase/ssr: Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY')
     }
+    // Return a mock client to prevent crashes
+    return createBrowserClient('https://placeholder.supabase.co', 'placeholder-key')
   }
 
   return createBrowserClient(url, anonKey)
